@@ -6,7 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 
@@ -21,11 +20,13 @@ public class TableTest {
 
     @Before
     public void setup() {
-        table.setHorse('A', (byte) 1);
+        horse.setPosition('A', (byte)1);
+        //table.setHorse('A', (byte) 1);
     }
 
     @Test
     public void moveHorse_nominal_possible() {
+        when(horse.isPossibleToMove('C', (byte)2)).thenReturn(true);
         boolean actual = table.moveHorse('C', (byte) 2);
 
         Assert.assertTrue(actual);
@@ -41,6 +42,7 @@ public class TableTest {
 
     @Test
     public void moveHorse_nominal_impossible_noRule() {
+        when(horse.isPossibleToMove('B', (byte)4)).thenReturn(false);
         boolean actual = table.moveHorse('B', (byte) 4);
 
         Assert.assertFalse(actual);
