@@ -24,7 +24,7 @@ public class Table {
         table[horse.getIndexPosition()][horse.getLetterPosition()] = 1;
     }
 
-    private boolean isOnTable(char letter, byte index) {
+    public boolean isOnTable(char letter, byte index) {
         return ((letter >= 65 && letter <= 72) || (letter >= 97 && letter <= 104))
                 && (index >= 1 && index <= 8);
     }
